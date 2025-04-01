@@ -1,4 +1,5 @@
 import psycopg2
+
 DB_NAME="postgres"
 DB_USER="postgres.zpxwnpqhwmwmmgdizqyb"
 DB_PASSWORD="Codeblocks@123"
