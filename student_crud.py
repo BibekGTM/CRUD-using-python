@@ -111,13 +111,64 @@ def alter_student():
     print("Data Updated!!")
 
 
-   
+
+def insert_teacher():
+    conn = db_connection()
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO teacher (name, age, course_id) VALUES ('Mrigendra Pradhan', 20, 1)")
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print("Teacher Data Inserted!!")
+
+def insert_course():
+    conn = db_connection()
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO courses (course_name, course_description) VALUES ('Python Programming', 'Learn the basics of Python.') RETURNING course_id")
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print("Course Data Inserted!!")
+
+def insert_student():
+    conn = db_connection()
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO students (name, age, course_id, gender) VALUES ('Bikash Shrestha', 18, 1, 'Male') RETURNING student_id")
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print("Student Data Inserted!!")
+
+def insert_enrollment():
+    conn = db_connection()
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO enrollements (student_id, course_id) VALUES (1, 1)")
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print("Enrollment Data Inserted!!")
+
+
+def rename_student_column():
+    conn = db_connection()
+    cursor = conn.cursor()
+    cursor.execute("ALTER TABLE enrollements RENAME TO enrollments")
+    conn.commit()
+    cursor.close()
+    conn.close()
+    print("Enrollment Data Inserted!!")
+
 
 if __name__ == "__main__":
     #create_students_table()
     #create_courses_table()
     #create_enrollments_table()
-    alter_student()
+    #alter_student()
+    #insert_teacher()
+    #insert_course()
+    #insert_student()
+    #insert_enrollment()
+    rename_student_column()
 
     
     
